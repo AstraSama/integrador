@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>employee_register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="employee_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -24,6 +24,7 @@
                 <a href="#">Buscar<i class="fas fa-search"></i> </a>
                 <a href="#"> Honorários<i class="fas fa-money-bill-wave"></i></a>
                 <a href="#" class="active">Cadastro Funcionário<i class="fas fa-user-plus"></i> </a>
+                <a href="/home/felipe/Documentos/projeto_integrador/testGpt/view/enterprise_register/enterprise_index.html">Cadastro Empresa<i class="fas fa-arrow-down"></i></a>
             </div>
         </div>
         <div class="content flex-grow-1">
@@ -33,19 +34,19 @@
                 <form>
                     <div class="mb-3"> 
                         <label for="nome" class="form-label">Nome do Funcionário:</label>
-                        <input type="text" id="nome" class="form-control" placeholder="Digite o nome do funcionário">
+                        <input type="text" id="name_employee" class="form-control" placeholder="Digite o nome do funcionário">
                     </div>
                     <div class="mb-3"> 
                         <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" id="senha" class="form-control" placeholder="Digite a senha do funcionário">
+                        <input type="password" id="password_employee" class="form-control" placeholder="Digite a senha do funcionário">
                     </div>
                     <div class="mb-3"> 
                         <label for="telefone" class="form-label">Telefone:</label>
-                        <input type="text" id="telefone" class="form-control" placeholder="Digite o telefone do funcionário">
+                        <input type="text" id="phone_employee" class="form-control" placeholder="Digite o telefone do funcionário">
                     </div>
                     <div class="mb-3"> 
                         <label for="email" class="form-label">Email:</label>
-                        <input type="email" id="email" class="form-control" placeholder="Digite o email do funcionário">
+                        <input type="email" id="email_employee" class="form-control" placeholder="Digite o email do funcionário">
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i> ENVIAR</button>
                 </form>
