@@ -1,3 +1,5 @@
+<!DOCTYPE html> 
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,25 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="header">
-        <a href="https://github.com/AstraSama/testGpt.git" class="logo"><img src="/home/felipe/Downloads/logo_branco-removebg-preview.png" alt="Logo do Programa"></a>
-        <div class="profile">
-            <i class="fas fa-user-circle"></i>
-        </div>
-    </div>
-
+    <div id="header-container"></div>
+    
     <div class="d-flex">
-        <div class="sidebar p-3">
-            <button class="toggle-btn">Dashboard<i class="fas fa-chevron-down"></i> </button>
-            <div class="menu hidden">
-                <a href="#">Cadastro Rápido<i class="fas fa-plus"></i> </a>
-                <a href="#"> Cadastro Completo<i class="fas fa-file-alt"></i></a>
-                <a href="#">Buscar<i class="fas fa-search"></i> </a>
-                <a href="#"> Honorários<i class="fas fa-money-bill-wave"></i></a>
-                <a href="/home/felipe/Documentos/projeto_integrador/testGpt/view/employee_register/employee_index.html">Cadastro Funcionário<i class="fas fa-user-plus"></i> </a>
-                <a href="#" class="active">Cadastro Empresa<i class="fas fa-arrow-down"></i></a>
-            </div>
-        </div>
         <div class="content flex-grow-1">
             <h4>Cadastre Empresas Aqui</h4>
             <hr>
@@ -37,33 +23,78 @@
                         <input type="text" id="name_enterprise" class="form-control" placeholder="Digite o nome da empresa">
                     </div>
                     <div class="mb-3"> 
-                        <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" id="password_enterprise" class="form-control" placeholder="Digite a senha do funcionário">
-                    </div>
-                    <div class="mb-3"> 
                         <label for="telefone" class="form-label">Telefone:</label>
                         <input type="text" id="phone_enterprise" class="form-control" placeholder="Digite o telefone da empresa">
                     </div>
                     <div class="mb-3"> 
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" id="email_enterprise" class="form-control" placeholder="Digite o email da empresa">
+                        <label for="CNPJ" class="form-label">CNPJ:</label>
+                        <input type="text" id="cnpj_enterprise" class="form-control" placeholder="Digite o CNPJ da empresa">
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i> ENVIAR</button>
                 </form>
             </div>
         </div>
     </div>
-    <script>
-    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js";
-    
-    const toggleBtn = document.querySelector('.toggle-btn');
-    const menu = document.querySelector('.menu');
 
-    toggleBtn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        toggleBtn.querySelector('i').classList.toggle('fa-chevron-down');
-        toggleBtn.querySelector('i').classList.toggle('fa-chevron-up');
-    });
+    <div id="footer-container"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <script>
+    
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const menu = document.querySelector('.menu');
+
+        if (toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                        toggleBtn.querySelector('i').classList.toggle('fa-chevron-down');
+                        toggleBtn.querySelector('i').classList.toggle('fa-chevron-up');
+                    }
+                });
+            }
+
+        fetch("../components/header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-container').innerHTML = data;
+
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const sidebar = document.getElementById('sidebar');
+
+            if (menuIcon) {
+                    menuIcon.addEventListener('click', () => {
+                        if (sidebar) {
+                            sidebar.classList.add('open');
+                        }
+                    });
+                }
+
+                if (closeIcon) {
+                    closeIcon.addEventListener('click', () => {
+                        if (sidebar) {
+                            sidebar.classList.remove('open');
+                        }
+                    });
+                }
+        })
+        .catch(error => console.error('Erro ao carregar o header:', error));
+
+        fetch('../components/footer.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Houve um problema com a requisição Fetch:', error);
+            });
     </script>
 </body>
 </html>
